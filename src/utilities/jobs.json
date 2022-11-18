@@ -1,0 +1,19 @@
+{
+  "jobs": {
+    "0": {
+      "company": "Amazon",
+      "jobTitle": "SDE",
+      "appliedOn": "2022-11-14T21:00:00.000Z",
+      "status": "OA Completed",
+      "deadline": ""
+    },
+
+    "1": {
+      "company": "Google",
+      "jobTitle": "SWE",
+      "appliedOn": "2022-11-11T21:00:00.000Z",
+      "status": "Interview Scheduled",
+      "deadline": "2022-11-20T21:00:00.000Z"
+    }
+  }
+}
