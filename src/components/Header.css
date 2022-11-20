@@ -1,0 +1,7 @@
+.plain-link {
+  color: black;
+  text-decoration: none;
+  display: block;
+  font-size: larger;
+  margin: 5px;
+}

@@ -3,8 +3,8 @@ import Collapse from "react-bootstrap/Collapse";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 export const Job = ({ company, jobTitle, appliedOn, status, deadline }) => {
-  const [openJob, setOpenJob] = useState(false);
-
+  const [openJob, setOpenJob] = useState(true);
+  console.log(company)
   return (
     <>
       <div onClick={() => setOpenJob(!openJob)}>
