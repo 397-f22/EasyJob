@@ -1,45 +1,47 @@
-import { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import logo from "./logo.svg";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import { JobsList } from "./components/JobsList";
+import Landing from "./components/Landing";
+import { getUser } from "./components/User";
+import { useDbData } from "./utilities/firebase";
+import { Header } from "./components/Header";
+
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  const user = getUser();
+  const [users, uerror] = useDbData("/users");
+  const [jobs, j_error] = useDbData("/jobs");
 
+  if (uerror) return <h1>Error loading users: {uerror.toString()}</h1>;
+  if (users === undefined) return <h1>Loading users...</h1>;
+  if (!users) return <h1>No users found</h1>;
+
+  if (j_error) return <h1>Error loading jobs: {j_error.toString()}</h1>;
+  if (jobs === undefined) return <h1>Loading jobs...</h1>;
+  if (!jobs) return <h1>No jobs found</h1>;
+
+  // console.log(users);
+  // console.log(jobs)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount(count => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test hot module replacement (HMR).
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Landing user={user} />}></Route>
+      <Route
+          path="/jobs"
+          element={
+            <div>
+              <Header></Header>
+              <JobsList jobs={jobs}/>;
+            </div>
+          }
+      />     
+      </Routes>
+    </BrowserRouter>
+  )
 };
 
 export default App;
