@@ -1,4 +1,35 @@
-.job-title {
+.job-title, .job-title-middle {
   display: flex;
   justify-content: space-between;
+  margin-top: 8px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.card-header {
+  height: 80px;
+  background-color: lavender;
+}
+
+.card {
+  font-family: initial;
+  color: #958160;
+  background-color: lavender;
+}
+
+.company-text {
+  text-transform: uppercase;
+}
+
+.role-text {
+  text-transform: lowercase;
+}
+
+.icon {
+  margin-right: 3px;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #958160;
 }

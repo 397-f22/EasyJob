@@ -1,6 +1,6 @@
 import "./Jobs.css";
 
-import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+import { BsChevronDown, BsChevronUp, BsFillCalendarCheckFill, BsLink45Deg, BsAlarmFill, BsSpeedometer } from "react-icons/bs";
 import { Button, Card, Dropdown, DropdownButton } from "react-bootstrap";
 
 import Collapse from "react-bootstrap/Collapse";
@@ -16,6 +16,7 @@ export const Job = ({
   status,
   deadline,
   user,
+  tab
 }) => {
   const [openJob, setOpenJob] = useState(false);
 
@@ -31,20 +32,37 @@ export const Job = ({
     day: "numeric",
   });
 
+  var deadlineText;
+  switch (status) {
+    case "Online Assessment":
+      deadlineText = "Due by "
+      break;
+    case "Interview":
+      deadlineText = "Scheduled for "
+      break;
+    case "Offered":
+      deadlineText = "Accept by "
+      break;
+  }
+
   return (
     <>
       <Card className="m-2">
         <Card.Header onClick={() => setOpenJob(!openJob)}>
           <div className="job-title">
-            {company} - {jobTitle}
+            <p></p>
+            <div className="job-title-middle">
+            <p className="company-text">{company}</p> &nbsp; | &nbsp; <p className="role-text">{jobTitle}</p>
+            </div>
             {openJob ? <BsChevronUp /> : <BsChevronDown />}
           </div>
         </Card.Header>
         <Collapse in={openJob}>
           <Card.Body>
-            <Card.Text>Applied on {appliedDate}</Card.Text>
-            <Card.Text>{status}</Card.Text>
-            {deadline && <Card.Text>{deadlineDate}</Card.Text>}
+            <Card.Text> <BsFillCalendarCheckFill className="icon"/> Applied on {appliedDate}</Card.Text>
+            {/* <Card.Text> <BsLink45Deg className="icon" /> {url} </Card.Text> */}
+            {tab === "All" ? <Card.Text> <BsSpeedometer className="icon" />{status}</Card.Text> : ""}
+            {deadline && <Card.Text> <BsAlarmFill className="icon" />{deadlineText}{deadlineDate}</Card.Text>}
             <DropdownButton variant="secondary" title="Change Status">
               {Object.values(Status).map((status) => (
                 <Dropdown.Item

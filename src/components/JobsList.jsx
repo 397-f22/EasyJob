@@ -3,7 +3,7 @@ import { Job } from "./Job";
 export const JobsList = ({ jobs, status, user }) => {
   if (jobs) {
     const filteredJobs = Object.entries(jobs).filter(
-      ([id, job]) => status === undefined || job.status === status
+      ([id, job]) => status === "All" || job.status === status
     );
     return (
       <div>
@@ -17,9 +17,10 @@ export const JobsList = ({ jobs, status, user }) => {
                   company={job.company}
                   jobTitle={job.jobTitle}
                   appliedOn={job.appliedOn}
-                  status={status === undefined ? job.status : undefined}
+                  status={job.status}
                   deadline={job.deadline}
                   user={user}
+                  tab={status}
                 />
               );
             })}
