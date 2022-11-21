@@ -16,7 +16,7 @@ export const JobsList = ({ jobs, status }) => {
                   company={job.company}
                   jobTitle={job.jobTitle}
                   appliedOn={job.appliedOn}
-                  status={job.status}
+                  status={status === undefined ? job.status : undefined}
                   deadline={job.deadline}
                 />
               );
