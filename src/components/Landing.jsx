@@ -14,10 +14,11 @@ const Landing = ({ user }) => {
     return (
       <div className="landing">
         <Image src={logo} width={320}></Image>
-        <div className="subheading">insert catchy one-line description!</div>
+        <div className="subheading">
+          Applying to jobs has never been easier!
+        </div>
         <p className="description">
-          Manage your jobs applications with EasyJob. ajdf k=jml
-          adfkjoijoefwjaWfnhe
+          Easily keep track of your job applications and status
         </p>
         <SignIn />
       </div>

@@ -1,11 +1,23 @@
-import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+import "./Jobs.css";
 
-import { Card } from "react-bootstrap";
+import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+import { Button, Card, Dropdown, DropdownButton } from "react-bootstrap";
+
 import Collapse from "react-bootstrap/Collapse";
+import { Status } from "../utilities/constants";
+import { updateStatus } from "../utilities/firebase";
 import { useState } from "react";
 
-export const Job = ({ company, jobTitle, appliedOn, status, deadline }) => {
-  const [openJob, setOpenJob] = useState(true);
+export const Job = ({
+  id,
+  company,
+  jobTitle,
+  appliedOn,
+  status,
+  deadline,
+  user,
+}) => {
+  const [openJob, setOpenJob] = useState(false);
 
   const appliedDate = new Date(appliedOn).toLocaleString("en-US", {
     year: "numeric",
@@ -21,15 +33,28 @@ export const Job = ({ company, jobTitle, appliedOn, status, deadline }) => {
 
   return (
     <>
-      <Card>
+      <Card className="m-2">
         <Card.Header onClick={() => setOpenJob(!openJob)}>
-          {company} - {jobTitle}
+          <div className="job-title">
+            {company} - {jobTitle}
+            {openJob ? <BsChevronUp /> : <BsChevronDown />}
+          </div>
         </Card.Header>
         <Collapse in={openJob}>
           <Card.Body>
             <Card.Text>Applied on {appliedDate}</Card.Text>
             <Card.Text>{status}</Card.Text>
             {deadline && <Card.Text>{deadlineDate}</Card.Text>}
+            <DropdownButton variant="secondary" title="Change Status">
+              {Object.values(Status).map((status) => (
+                <Dropdown.Item
+                  key={status}
+                  onClick={() => updateStatus(user.uid, id, status)}
+                >
+                  {status}
+                </Dropdown.Item>
+              ))}
+            </DropdownButton>
           </Card.Body>
         </Collapse>
       </Card>

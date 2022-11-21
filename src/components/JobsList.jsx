@@ -1,6 +1,6 @@
 import { Job } from "./Job";
 
-export const JobsList = ({ jobs, status }) => {
+export const JobsList = ({ jobs, status, user }) => {
   if (jobs) {
     const filteredJobs = Object.entries(jobs).filter(
       ([id, job]) => status === undefined || job.status === status
@@ -13,11 +13,13 @@ export const JobsList = ({ jobs, status }) => {
               return (
                 <Job
                   key={id}
+                  id={id}
                   company={job.company}
                   jobTitle={job.jobTitle}
                   appliedOn={job.appliedOn}
                   status={status === undefined ? job.status : undefined}
                   deadline={job.deadline}
+                  user={user}
                 />
               );
             })}

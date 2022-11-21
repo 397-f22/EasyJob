@@ -37,7 +37,7 @@ const App = () => {
           element={
             <div>
               <Header></Header>
-              <Subheader jobs={user?.jobs} />
+              <Subheader jobs={user?.jobs} user={user} />
             </div>
           }
         />

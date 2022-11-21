@@ -28,7 +28,7 @@ const firebaseConfig = {
   storageBucket: "easyjob-ee2ca.appspot.com",
   messagingSenderId: "640029378298",
   appId: "1:640029378298:web:a6e30401e1edbf90d2eb43",
-  measurementId: "G-5RHL6NV3BY"
+  measurementId: "G-5RHL6NV3BY",
 };
 
 const firebase = initializeApp(firebaseConfig);
@@ -76,10 +76,14 @@ export const addUser = (user) => {
     email: user.email,
     displayName: user.displayName,
     photoURL: user.photoURL,
-    phoneNumber: user.phoneNumber
+    phoneNumber: user.phoneNumber,
   };
 
   set(ref(database, "users/" + user.uid), newUser);
+};
+
+export const updateStatus = (uid, jobid, newStatus) => {
+  set(ref(database, "/users/" + uid + "/jobs/" + jobid + "/status"), newStatus);
 };
 
 // export const addSession = (
