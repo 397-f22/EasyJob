@@ -1,25 +1,27 @@
-import { useState } from "react";
-import Collapse from "react-bootstrap/Collapse";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+
+import { Card } from "react-bootstrap";
+import Collapse from "react-bootstrap/Collapse";
+import { useState } from "react";
 
 export const Job = ({ company, jobTitle, appliedOn, status, deadline }) => {
   const [openJob, setOpenJob] = useState(true);
-  console.log(company)
+  // console.log(company);
   return (
     <>
-      <div onClick={() => setOpenJob(!openJob)}>
-        {openJob ? <BsChevronUp /> : <BsChevronDown />}
-      </div>
-
-      <Collapse in={openJob}>
-        <div id="example-collapse-text">
-          <p>{company}</p>
-          <p>{jobTitle}</p>
-          <p>{appliedOn}</p>
-          <p>{status}</p>
-          <p>{deadline}</p>
-        </div>
-      </Collapse>
+      <Card>
+        <Card.Header onClick={() => setOpenJob(!openJob)}>
+          {company}
+        </Card.Header>
+        <Collapse in={openJob}>
+          <Card.Body>
+            <Card.Text>{jobTitle}</Card.Text>
+            <Card.Text>{appliedOn}</Card.Text>
+            <Card.Text>{status}</Card.Text>
+            <Card.Text>{deadline}</Card.Text>
+          </Card.Body>
+        </Collapse>
+      </Card>
     </>
   );
 };
