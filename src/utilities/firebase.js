@@ -18,6 +18,10 @@ import { useEffect, useState } from "react";
 
 import { initializeApp } from "firebase/app";
 
+//WHAT'S NEW:
+//Error: Users do not get a joblist upon being created, check addUser function
+//Added in AddJob function for the form
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -86,34 +90,28 @@ export const updateStatus = (uid, jobid, newStatus) => {
   set(ref(database, "/users/" + uid + "/jobs/" + jobid + "/status"), newStatus);
 };
 
-// export const addSession = (
-//   course,
-//   date,
-//   duration,
-//   location,
-//   student,
-//   newCredits
-// ) => {
-//   const newSession = {
-//     course: course,
-//     date: date,
-//     duration: duration,
-//     location: location,
-//     student: student,
-//     tutor: "",
-//   };
+//AddJob Function
+export const addJob = (
+    company,
+    jobTitle,
+    appliedOn,
+    deadline,
+    status,
+    uid,
+  ) => {
+    const newJob = {
+      company: company,
+      jobTitle: jobTitle,
+      appliedOn: appliedOn,
+      deadline: deadline,
+      status: status,
+    };
 
-//   const key = push(child(ref(database), "sessions")).key;
+    const path = `/users/${uid}`;
+    const key = push(child(ref(database), "jobs")).key;
 
-//   const updates = {};
-//   updates["/sessions/" + key] = newSession;
-//   updates["/users/" + student + "/credits"] = newCredits;
+    const updates = {};
+    updates[path + "/jobs/" + key] = newJob;
 
-//   return update(ref(database), updates);
-// };
-
-// // add user to session as tutor
-// export const tutorSession = (tutorid, sessid, newCredits) => {
-//   set(ref(database, "/sessions/" + sessid + "/tutor"), tutorid);
-//   set(ref(database, "/users/" + tutorid + "/credits"), newCredits);
-// };
+    return update(ref(database), updates);
+};

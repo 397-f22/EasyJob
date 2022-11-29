@@ -11,6 +11,7 @@ import { getUser } from "./components/User";
 import logo from "./logo.svg";
 import { useDbData } from "./utilities/firebase";
 import { useState } from "react";
+import { AddJob } from "./components/AddJob";
 
 const App = () => {
   const user = getUser();
@@ -28,6 +29,14 @@ const App = () => {
   console.log(user);
   // console.log(jobs)
 
+
+  //WHAT'S NEW:
+  //See AddJob.jsx, firebase.js and JobList.jsx for changes made in this branch
+  //
+  //In App.jsx:
+  //Added new route that directs to the addJob form.
+  //It is passed the user from the App.jsx file
+
   return (
     <BrowserRouter>
       <Routes>
@@ -38,6 +47,15 @@ const App = () => {
             <div>
               <Header></Header>
               <Subheader jobs={user?.jobs} user={user} />
+            </div>
+          }
+        />
+        <Route
+          path="/addJob"
+          element={
+            <div>
+              <Header></Header>
+              <AddJob user = {user}></AddJob>
             </div>
           }
         />
