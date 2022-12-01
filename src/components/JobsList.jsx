@@ -1,24 +1,4 @@
 import { Job } from "./Job";
-import { Navigate, useNavigate } from "react-router-dom";
-
-//WHAT'S NEW:
-//Added the AddJob button
-//Add a job button
-//If anyone knows how to center a button, please center the addjob button
-
-const AddJobButton = () => {
-  const navigate = useNavigate();
-
-  function gotoAddJob() {
-    navigate("/addJob");
-  }
-
-  return (
-    <button className="btn btn-dark" onClick={gotoAddJob}>
-      Add a Job
-    </button>
-  );
-}
 
 export const JobsList = ({ jobs, status, user }) => {
   if (jobs) {
@@ -44,8 +24,6 @@ export const JobsList = ({ jobs, status, user }) => {
                 />
               );
             })}
-
-            <AddJobButton />
       </div>
     );
   }

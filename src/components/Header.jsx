@@ -1,4 +1,5 @@
 import "./Header.css";
+import { AddJobButton } from "./AddJobButton";
 
 import {
   Button,
@@ -16,6 +17,11 @@ import Image from "react-bootstrap/Image";
 import { Logo } from "./Logo";
 import { Plus } from "react-bootstrap-icons";
 import logo from "../static/logo.png";
+
+
+//WHAT'S NEW:
+//Added the Add a Job Button
+//Need help with CSS
 
 const SignOutButton = () => {
   const navigate = useNavigate();
@@ -46,6 +52,7 @@ export const Header = ({ showAddRides, user }) => {
         <Link className="plain-link text-white" to="/">
           <Image src={logo} width={180}></Image>
         </Link>
+        <AddJobButton/>
         <SignOutButton />
 
         {showAddRides ? (

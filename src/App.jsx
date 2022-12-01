@@ -31,7 +31,7 @@ const App = () => {
 
 
   //WHAT'S NEW:
-  //See AddJob.jsx, firebase.js and JobList.jsx for changes made in this branch
+  //See AddJob.jsx, firebase.js and AddJobButton.jsx for changes made in this branch
   //
   //In App.jsx:
   //Added new route that directs to the addJob form.
