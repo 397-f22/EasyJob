@@ -83,7 +83,7 @@ export const AddJob = ({ user }) => {
         status,
         user.uid
       );
-      navigate("/jobs");
+      navigate("/");
     };
 
     return (

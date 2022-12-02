@@ -52,7 +52,6 @@ export const Header = ({ showAddRides, user }) => {
         <Link className="plain-link text-white" to="/">
           <Image src={logo} width={180}></Image>
         </Link>
-        <AddJobButton/>
         <SignOutButton />
 
         {showAddRides ? (
