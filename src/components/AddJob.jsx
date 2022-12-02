@@ -72,7 +72,7 @@ export const AddJob = ({ user }) => {
       evt.preventDefault();
       const formData = evt.target;
       const appliedOn = new Date(`${formData.appliedOn.value}`);
-      const deadline = new Date(`${formData.deadline.value}`);
+      const deadline = "";
       const status = "Applied";
 
       addJob(
@@ -100,11 +100,6 @@ export const AddJob = ({ user }) => {
   
         <Form.Group className="mb-3" controlId="appliedOn">
           <Form.Label>Date Applied On</Form.Label>
-          <Form.Control type="date" />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="deadline">
-          <Form.Label>Deadline</Form.Label>
           <Form.Control type="date" />
         </Form.Group>
   
