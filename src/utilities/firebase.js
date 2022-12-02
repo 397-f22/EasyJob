@@ -115,3 +115,7 @@ export const addJob = (company, jobTitle, appliedOn, deadline, status, uid) => {
 
   return update(ref(database), updates);
 };
+
+export const removeJob = (userid, jobid) => {
+  set(ref(database, "/users/" + userid + "/jobs/" + jobid), null);
+};

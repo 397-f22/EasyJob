@@ -7,12 +7,13 @@ import {
   BsLink45Deg,
   BsAlarmFill,
   BsSpeedometer,
+  BsTrash,
 } from "react-icons/bs";
 import { Button, Card, Dropdown, DropdownButton } from "react-bootstrap";
 
 import Collapse from "react-bootstrap/Collapse";
 import { Status } from "../utilities/constants";
-import { updateDeadline, updateStatus } from "../utilities/firebase";
+import { updateDeadline, updateStatus, removeJob } from "../utilities/firebase";
 import { useState } from "react";
 import { DeadlineUpdater } from "./DeadlineUpdater";
 
@@ -123,6 +124,16 @@ export const Job = ({
                 </Dropdown.Item>
               ))}
             </DropdownButton>
+            <Card.Text>
+              {" "}
+              <Button
+                variant="outline-secondary"
+                id="trashIcon"
+                onClick={() => removeJob(user.uid, id)}
+              >
+                <BsTrash className="icon" />
+              </Button>
+            </Card.Text>
           </Card.Body>
         </Collapse>
       </Card>

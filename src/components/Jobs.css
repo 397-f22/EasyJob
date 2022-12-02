@@ -1,4 +1,5 @@
-.job-title, .job-title-middle {
+.job-title,
+.job-title-middle {
   display: flex;
   justify-content: space-between;
   margin-top: 8px;
@@ -27,6 +28,10 @@
 
 .icon {
   margin-right: 3px;
+}
+
+#trashIcon {
+  margin-top: 10px;
 }
 
 .btn-secondary {
