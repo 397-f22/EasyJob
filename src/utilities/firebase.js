@@ -90,28 +90,28 @@ export const updateStatus = (uid, jobid, newStatus) => {
   set(ref(database, "/users/" + uid + "/jobs/" + jobid + "/status"), newStatus);
 };
 
+export const updateDeadline = (uid, jobid, newDeadline) => {
+  set(
+    ref(database, "/users/" + uid + "/jobs/" + jobid + "/deadline"),
+    newDeadline
+  );
+};
+
 //AddJob Function
-export const addJob = (
-    company,
-    jobTitle,
-    appliedOn,
-    deadline,
-    status,
-    uid,
-  ) => {
-    const newJob = {
-      company: company,
-      jobTitle: jobTitle,
-      appliedOn: appliedOn,
-      deadline: deadline,
-      status: status,
-    };
+export const addJob = (company, jobTitle, appliedOn, deadline, status, uid) => {
+  const newJob = {
+    company: company,
+    jobTitle: jobTitle,
+    appliedOn: appliedOn,
+    deadline: deadline,
+    status: status,
+  };
 
-    const path = `/users/${uid}`;
-    const key = push(child(ref(database), "jobs")).key;
+  const path = `/users/${uid}`;
+  const key = push(child(ref(database), "jobs")).key;
 
-    const updates = {};
-    updates[path + "/jobs/" + key] = newJob;
+  const updates = {};
+  updates[path + "/jobs/" + key] = newJob;
 
-    return update(ref(database), updates);
+  return update(ref(database), updates);
 };
