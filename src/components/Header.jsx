@@ -33,7 +33,7 @@ const SignOutButton = () => {
   }
 
   return (
-    <button className="btn btn-dark" onClick={signOutProcess}>
+    <button className="btn btn-dark" onClick={signOutProcess} data-testid="sign out">
       Sign out
     </button>
   );

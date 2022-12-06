@@ -129,6 +129,7 @@ export const Job = ({
               <Button
                 variant="outline-secondary"
                 id="trashIcon"
+                data-testid={`delete-${tab}-${id}`}
                 onClick={() => removeJob(user.uid, id)}
               >
                 <BsTrash className="icon" />

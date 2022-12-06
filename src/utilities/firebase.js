@@ -117,5 +117,6 @@ export const addJob = (company, jobTitle, appliedOn, deadline, status, uid) => {
 };
 
 export const removeJob = (userid, jobid) => {
+  console.log("REMOVED JOB");
   set(ref(database, "/users/" + userid + "/jobs/" + jobid), null);
 };
