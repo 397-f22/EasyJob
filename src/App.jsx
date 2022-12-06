@@ -50,15 +50,6 @@ const App = () => {
             </div>
           }
         />
-        <Route
-          path="/addJob"
-          element={
-            <div>
-              <Header></Header>
-              <AddJob user = {user}></AddJob>
-            </div>
-          }
-        />
       </Routes>
     </BrowserRouter>
   );

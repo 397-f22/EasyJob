@@ -6,7 +6,7 @@ export const JobsList = ({ jobs, status, user }) => {
       ([id, job]) => status === "All" || job.status === status
     );
     return (
-      <div>
+      <div data-testid={status + " List"}>
         {filteredJobs.length === 0
           ? "No jobs with this status"
           : filteredJobs.map(([id, job]) => {
