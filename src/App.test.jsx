@@ -49,6 +49,8 @@ it("shows all job applications with the online assesment status", async () => {
   const oa_tab = screen.getByTestId("Online Assessment");
   await fireEvent.click(oa_tab);
   const oa_list = screen.getByTestId("Online Assessment List");
+  expect(oa_list.textContent).not.toContain("Test Company 0");
   expect(oa_list.textContent).toContain("Test Company 1");
   expect(oa_list.textContent).toContain("Test Company 2");
+  expect(oa_list.textContent).not.toContain("Test Company 4");
 });
