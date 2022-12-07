@@ -6,15 +6,15 @@ import { Navigate, useNavigate } from "react-router-dom";
 //If anyone knows how to center a button, please center the addjob button
 
 export const AddJobButton = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  function gotoAddJob() {
-    navigate("/addJob");
-  }
+    function gotoAddJob() {
+        navigate("/addJob");
+    }
 
-  return (
-    <button className="btn btn-dark" onClick={gotoAddJob}>
-      Add a Job
-    </button>
-  );
-}
+    return (
+        <button className="btn btn-dark" onClick={gotoAddJob}>
+            Add a Job
+        </button>
+    );
+};
