@@ -51,19 +51,18 @@ const mockUser = {
   },
 };
 
-describe("Adding a job outputs another job on 'All Jobs'", () => {
-  it("should return 'No jobs with this status'", async () => {
+describe("Adding a job", () => {
+  it("should call 'addJob' when the form is submitted   ", async () => {
     getUser.mockReturnValue([mockUser]);
-    await render(<Subheader jobs={mockUser["jobs"]} user={mockUser} />, {
+    render(<Subheader jobs={mockUser["jobs"]} user={mockUser} />, {
       wrapper: BrowserRouter,
     });
     // const ajTab = screen.getByTestId("add");
     const ajTab = screen.getByTestId("addJobButton");
-    await fireEvent.click(ajTab);
-    addJob.mockReturnValue(null);
+    fireEvent.click(ajTab);
     const submitButton = screen.getByTestId("addJobSubmit");
-
-    // console.log(addJobButton);
-    // expect(oaList.textContent).toBe("No jobs with this status");
+    // console.log(submitButton);
+    fireEvent.click(submitButton);
+    expect(addJob).toHaveBeenCalledTimes(1);
   });
 });
