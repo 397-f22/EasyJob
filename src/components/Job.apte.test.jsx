@@ -1,7 +1,7 @@
-import { BrowserRouter } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, act } from "@testing-library/react";
 import { Subheader } from "./Subheader";
+import { BrowserRouter } from "react-router-dom";
 import { getUser } from "./User";
 
 vi.mock("./User");
