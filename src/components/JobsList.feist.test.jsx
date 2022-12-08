@@ -47,6 +47,13 @@ const mockUser = {
       status: "Interview",
       deadline: "2022-11-20T21:00:00.000Z",
     },
+    5: {
+      company: "Tesla",
+      jobTitle: "swe",
+      appliedOn: "2022-11-11T21:00:00.000Z",
+      status: "Online Assessment",
+      deadline: "2022-11-20T21:00:00.000Z",
+    },
   },
 };
 
@@ -63,5 +70,41 @@ describe("'Interview' tab displays all jobs with status 'Interview'", () => {
     expect(interviewList.textContent).toContain("Google");
     expect(interviewList.textContent).toContain("Apple");
     expect(interviewList.textContent).toContain("Bloomberg");
+  });
+});
+
+describe("Jobs in 'Online Assessment' tab should have a deadline date", () => {
+  it("jobs should have a deadline date", async () => {
+    getUser.mockReturnValue([mockUser]);
+    await render(<Subheader jobs={mockUser["jobs"]} user={mockUser} />, {
+      wrapper: BrowserRouter,
+    });
+    await fireEvent.click(screen.getByTestId("Online Assessment"));
+    const oaJobs = screen.getByTestId("Online Assessment List");
+    expect(oaJobs.textContent).toContain("Due by");
+  });
+});
+
+describe("Jobs in 'Interview' tab should have a deadline date", () => {
+  it("jobs should have a deadline date", async () => {
+    getUser.mockReturnValue([mockUser]);
+    await render(<Subheader jobs={mockUser["jobs"]} user={mockUser} />, {
+      wrapper: BrowserRouter,
+    });
+    await fireEvent.click(screen.getByTestId("Interview"));
+    const intJobs = screen.getByTestId("Interview List");
+    expect(intJobs.textContent).toContain("Scheduled for");
+  });
+});
+
+describe("Jobs in 'Offered' tab should have a deadline date", () => {
+  it("jobs should have a deadline date", async () => {
+    getUser.mockReturnValue([mockUser]);
+    await render(<Subheader jobs={mockUser["jobs"]} user={mockUser} />, {
+      wrapper: BrowserRouter,
+    });
+    await fireEvent.click(screen.getByTestId("Offered"));
+    const offJobs = screen.getByTestId("Offered List");
+    expect(offJobs.textContent).toContain("Accept by");
   });
 });
